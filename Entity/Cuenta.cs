@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    internal class Cuenta
+    public class Cuenta
     {
         private Int64 dniTitular;
 

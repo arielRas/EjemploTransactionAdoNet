@@ -17,6 +17,7 @@ namespace DAL
             SqlConnection connection = new SqlConnection(connectionString);
 
             string sqlQuery = "SELECT saldo FROM Cuenta WHERE DNI_TITULAR = @dniTitular";
+
             try
             {
                 using (connection)
@@ -35,6 +36,36 @@ namespace DAL
             {
                 throw ex;
             }            
+        }
+
+        public bool ExisteCuenta(Int64 dniReceptor)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DbActividad08"].ConnectionString;
+
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            string sqlQuery = "SELECT COUNT(*) FROM Cuenta WHERE DNI_TITULAR = @dniReceptor";
+
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@dniReceptor", dniReceptor);
+
+                        if(Convert.ToInt32(command.ExecuteScalar()) == 1) return true;
+
+                            else return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void RealizarTransferencia(Int64 dniReceptor, Int64 dniEmisor, double monto)
