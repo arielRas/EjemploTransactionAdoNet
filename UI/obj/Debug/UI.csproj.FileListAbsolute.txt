@@ -1,0 +1,17 @@
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\UI.exe.config
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\UI.exe
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\UI.pdb
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\Business.dll
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\Entity.dll
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\DAL.dll
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\Business.pdb
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\Entity.pdb
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\bin\Debug\DAL.pdb
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\obj\Debug\UI.csproj.AssemblyReference.cache
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\obj\Debug\UI.Form1.resources
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\obj\Debug\UI.Properties.Resources.resources
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\obj\Debug\UI.csproj.GenerateResource.cache
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\obj\Debug\UI.csproj.CopyComplete
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\obj\Debug\UI.exe
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\UI\obj\Debug\UI.pdb

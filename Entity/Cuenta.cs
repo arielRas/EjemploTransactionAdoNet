@@ -12,10 +12,7 @@ namespace Entity
 
         private string nombreApellido;
 
-        private double saldo;
-
         public long DniTitular { get => dniTitular; set => dniTitular = value; }
         public string NombreApellido { get => nombreApellido; set => nombreApellido = value; }
-        public double Saldo { get => saldo; set => saldo = value; }
     }
 }

@@ -1,0 +1,9 @@
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\bin\Debug\DAL.dll
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\bin\Debug\DAL.pdb
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\bin\Debug\Entity.dll
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\bin\Debug\Entity.pdb
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\obj\Debug\DAL.dll
+C:\Users\Ariel\Desktop\Recursos\ActividadClase08\DAL\obj\Debug\DAL.pdb
