@@ -23,17 +23,18 @@ namespace UI
 
         private Cuenta cuentaPropia = null;
 
-        private void ListarCuentasDeDestino(Int64 miDni) //CARGA DE CUENTAS DE DESTINO
-        {
-            txtBoxCuentas.Items.Clear();
+        private void ListarCuentasDeDestino() //CARGA DE CUENTAS DE DESTINO
+        {           
 
             txtBoxCuentas.DataSource = null;
 
             txtBoxCuentas.DataSource = cuentaBusiness.GetAllCuentasDestino(cuentaPropia.DniTitular);
 
-            txtBoxCuentas.DisplayMember = "dniTitular";
+            txtBoxCuentas.DisplayMember = "nombreApellido";
 
-            txtBoxCuentas.ValueMember = "nombreApellido";
+            txtBoxCuentas.ValueMember = "dniTitular";
+
+            txtBoxCuentas.SelectedIndex = -1;
         }
 
 
@@ -43,7 +44,7 @@ namespace UI
             {
                 cuentaPropia = cuentaBusiness.GetCuentaPropia(35027567);
 
-                ListarCuentasDeDestino(cuentaPropia.DniTitular);
+                ListarCuentasDeDestino();
 
                 txtSaldoActual.Text = cuentaBusiness.GetSaldo(cuentaPropia).ToString() + "$";
             }
@@ -53,7 +54,40 @@ namespace UI
             }            
         }
 
+        private void btnEnviar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(txtBoxCuentas.SelectedValue != null)
+                {
+                    Int64 dniReceptor = Convert.ToInt64(txtBoxCuentas.SelectedValue.ToString());
 
-        
+                    double monto = Convert.ToDouble(txtMonto.Text);
+
+                    cuentaBusiness.RealizarTransferecia(cuentaPropia, dniReceptor, monto);
+
+                    MessageBox.Show($"La transferencia a {txtBoxCuentas.Text} se realizo con exito", "AVISO");
+
+                    txtMonto.Text = cuentaBusiness.GetSaldo(cuentaPropia).ToString() + "$";
+
+                    ListarCuentasDeDestino();
+
+                    txtMonto.Text = string.Empty;                    
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione el destinatario de la trasferencia", "AVISO");
+                }
+                
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("El campo monto solo acepta caracteres numerico", "AVISO");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AVISO");
+            }
+        }
     }
 }

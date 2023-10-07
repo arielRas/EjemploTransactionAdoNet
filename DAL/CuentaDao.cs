@@ -90,18 +90,22 @@ namespace DAL
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DbActividad08"].ConnectionString;
 
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            using (connection)
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                connection.Open();
+
                 SqlTransaction transaction = connection.BeginTransaction();
 
                 try
                 {
-                    string queryDebitar = "UPDATE Cuenta SET SALDO = SALDO - @monto WHERE DNI_TITULAR = @dniEmisor";                   
+                    string queryDebitar = "UPDATE Cuenta SET SALDO = SALDO - @monto WHERE DNI_TITULAR = @dniEmisor";
 
                     using (SqlCommand commandDebitar = new SqlCommand(queryDebitar, connection))
                     {
+                        commandDebitar.Transaction = transaction;
+
+                        commandDebitar.Parameters.AddWithValue("@monto", monto);
+
                         commandDebitar.Parameters.AddWithValue("@dniEmisor", dniEmisor);
 
                         commandDebitar.ExecuteNonQuery();
@@ -111,6 +115,10 @@ namespace DAL
 
                     using (SqlCommand commandAcreditar = new SqlCommand(queryAcreditar, connection))
                     {
+                        commandAcreditar.Transaction = transaction;
+
+                        commandAcreditar.Parameters.AddWithValue("@monto", monto);
+
                         commandAcreditar.Parameters.AddWithValue("@dniReceptor", dniReceptor);
 
                         commandAcreditar.ExecuteNonQuery();
@@ -118,12 +126,12 @@ namespace DAL
 
                     transaction.Commit();
                 }
-                catch (Exception ex)
-                {
+                catch(Exception ex) 
+                { 
                     transaction.Rollback();
                     throw ex;
                 }
-            }   
+            }
         }
 
         public List<Cuenta> GetAllCuentasDestino(Int64 dni)

@@ -13,8 +13,10 @@ namespace Business
     {
         private CuentaDao cuentaDao = new CuentaDao();
 
-        public void RealizarTransferecia(CuentaPropia cuentaPropia, Int64 dniReceptor, double monto)
-        {            
+        public void RealizarTransferecia(Cuenta cuentaPropia, Int64 dniReceptor, double monto)
+        {
+            if (monto <= 0) throw new Exception("El monto a enviar no puede ser menor o igual a cero");
+
             if (cuentaDao.GetSaldo(cuentaPropia.DniTitular) < monto) throw new Exception("El saldo de su cuenta no es suficiente para realizar esta transferencia");
 
             if (!cuentaDao.ExisteCuenta(dniReceptor)) throw new Exception("La cuenta de destino no existe o no se encuentra disponible");

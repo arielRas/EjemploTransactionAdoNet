@@ -57,6 +57,7 @@
             // 
             // txtBoxCuentas
             // 
+            this.txtBoxCuentas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtBoxCuentas.FormattingEnabled = true;
             this.txtBoxCuentas.Location = new System.Drawing.Point(116, 43);
             this.txtBoxCuentas.Name = "txtBoxCuentas";
@@ -78,6 +79,7 @@
             this.btnEnviar.TabIndex = 2;
             this.btnEnviar.Text = "ENVIAR";
             this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
             // 
             // label1
             // 
