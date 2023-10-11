@@ -15,7 +15,9 @@ namespace Business
 
         public void RealizarTransferecia(Cuenta cuentaPropia, Int64 dniReceptor, double monto)
         {
-            if (monto <= 0) throw new Exception("El monto a enviar no puede ser menor o igual a cero");
+            if (monto < 100) throw new Exception("El monto a enviar no puede ser menor a 100$");
+
+            if (cuentaPropia.DniTitular == dniReceptor) throw new Exception("No puede enviarse dinero a su propia cuenta");
 
             if (cuentaDao.GetSaldo(cuentaPropia.DniTitular) < monto) throw new Exception("El saldo de su cuenta no es suficiente para realizar esta transferencia");
 
