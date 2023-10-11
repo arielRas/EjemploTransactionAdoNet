@@ -4,6 +4,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Text;
@@ -86,7 +87,7 @@ namespace DAL
             }
         }
 
-        public void RealizarTransferencia(Int64 dniReceptor, Int64 dniEmisor, double monto)
+        public void RealizarTransferencia(Int64 dniReceptor, Int64 dniEmisor, double monto, DateTime fecha)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DbActividad08"].ConnectionString;
 
@@ -122,6 +123,23 @@ namespace DAL
                         commandAcreditar.Parameters.AddWithValue("@dniReceptor", dniReceptor);
 
                         commandAcreditar.ExecuteNonQuery();
+                    }
+
+                    string queryAgregarHistorial = "INSERT INTO Historial_Transferencias VALUES(@dniEmisor,@dniReceptor,@monto,@fecha)";
+
+                    using(SqlCommand commandAgregarHistorial = new SqlCommand(queryAgregarHistorial, connection))
+                    {
+                        commandAgregarHistorial.Transaction = transaction;
+
+                        commandAgregarHistorial.Parameters.AddWithValue("@dniEmisor",dniEmisor);
+
+                        commandAgregarHistorial.Parameters.AddWithValue("@dniReceptor", dniReceptor);
+
+                        commandAgregarHistorial.Parameters.AddWithValue("@monto",monto);
+
+                        commandAgregarHistorial.Parameters.AddWithValue("@fecha", fecha);
+
+                        commandAgregarHistorial.ExecuteNonQuery();
                     }
 
                     transaction.Commit();

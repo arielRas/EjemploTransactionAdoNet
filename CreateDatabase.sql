@@ -29,5 +29,3 @@ INSERT INTO Cuenta VALUES
 (24987126, 'Marta Serena Montiel', 50000),
 (48974567, 'Carlos Jose Martinez', 5000),
 (12469872, 'Patricia Beatriz Sanchez', 100000);
-
---SELECT * FROM Cuenta;

@@ -21,7 +21,7 @@ namespace Business
 
             if (!cuentaDao.ExisteCuenta(dniReceptor)) throw new Exception("La cuenta de destino no existe o no se encuentra disponible");
 
-            cuentaDao.RealizarTransferencia(dniReceptor, cuentaPropia.DniTitular, monto);
+            cuentaDao.RealizarTransferencia(dniReceptor, cuentaPropia.DniTitular, monto, DateTime.Now);
         }
 
         public double GetSaldo(Cuenta cuentaPropia)
